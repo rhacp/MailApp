@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="#5f9ea0">
+<h2 align="center">Active Users</h2>
+<a href="/api/mainpage">Main Page</a>
+<ul th:each="user : ${userList}">
+    <li>
+        <p th:text="${user.id}"></p>
+        <p th:text="${user.firstName}"></p>
+        <p th:text="${user.lastName}"></p>
+        <p th:text="${user.mail}"></p>
+        <p><hr></hr></p>
+    </li>
+</ul>
+</body>
+</html>

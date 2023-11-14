@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Slf4j
@@ -21,6 +22,25 @@ public class UserController {
     public UserController(UserDTOService userDTOService, UserService userService) {
         this.userDTOService = userDTOService;
         this.userService = userService;
+    }
+
+    @GetMapping("/api/users")
+    public String getUsers(Model model) {
+        model.addAttribute("userList", userService.getUserList());
+
+        return "admin_page";
+    }
+
+    @GetMapping("/api/users/{id}")
+    public String getUser(@PathVariable long id, Model model) {
+
+        //search in userList by id
+        User user = userService.getUserById(id);
+
+        //model add atribute user found
+        model.addAttribute("user", user);
+
+        return "user_page";
     }
 
     @GetMapping("/api/form/show")

@@ -8,5 +8,8 @@ import java.util.List;
 public interface UserService {
 
     User createUser(UserDTO userDTO);
+
     List<User> getUserList();
+
+    User getUserById(long id);
 }
