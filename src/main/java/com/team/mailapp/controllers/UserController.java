@@ -57,8 +57,12 @@ public class UserController {
 
     @PostMapping("/api/form/submit")
     public String submitForm(@ModelAttribute UserDTO userDTO) {
-        //add validator service
         User user = userService.createUser(userDTO);
+
+        if (user.getFirstName() == null) {
+            return "error_page";
+        }
+
         mailService.sendMail(user.getMail(), prepareMail(user));
 
         log.info("From submitForm: " + user.getFirstName());

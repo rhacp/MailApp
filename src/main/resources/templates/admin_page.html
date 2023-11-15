@@ -6,7 +6,7 @@
 </head>
 <body bgcolor="#5f9ea0">
 <h2 align="center">Active Users</h2>
-<a href="/api/mainpage">Main Page</a>
+<button type="button" onclick="location.href='/api/mainpage'"><h4>&nbsp;&nbsp;Go home&nbsp;&nbsp;</h4></button>
 <ul th:each="user : ${userList}">
     <li>
         <p th:text="${user.id}"></p>

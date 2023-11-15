@@ -14,13 +14,15 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService{
 
+    private final UserDTOService userDTOService;
     private final ObjectMapper objectMapper;
     private List<User> userList = new ArrayList<>(List.of(
             new User(1, "Laur", "Iulian", "mail@gmail.com", LocalDateTime.now()),
             new User(2, "Eric", "Cartman", "ericisevil@gmail.com", LocalDateTime.now())
     ));
 
-    public UserServiceImpl(ObjectMapper objectMapper) {
+    public UserServiceImpl(UserDTOService userDTOService, ObjectMapper objectMapper) {
+        this.userDTOService = userDTOService;
         this.objectMapper = objectMapper;
     }
 
@@ -45,6 +47,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User createUser(UserDTO userDTO) {
+        if (!userDTOService.validateUserDTO(userDTO)) {
+//            throw new RuntimeException("Invalid input!");
+            log.error("Invalid input.");
+            return new User();
+        }
+
         User user = objectMapper.convertValue(userDTO, User.class);
         assignId(user);
         user.setCreatedAt(LocalDateTime.now());
