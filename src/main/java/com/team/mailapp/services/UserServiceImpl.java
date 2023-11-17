@@ -47,12 +47,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User createUser(UserDTO userDTO) {
-        if (!userDTOService.validateUserDTO(userDTO)) {
-//            throw new RuntimeException("Invalid input!");
-            log.error("Invalid input.");
-            return new User();
-        }
-
         User user = objectMapper.convertValue(userDTO, User.class);
         assignId(user);
         user.setCreatedAt(LocalDateTime.now());

@@ -13,7 +13,7 @@ public class UserDTOServiceImpl implements UserDTOService {
         if (!userDTO.getMail().contains("@")) return false;
         String[] mailArray = userDTO.getMail().split("@");
         if (mailArray[0].length() < 3) return false;
-        if (!mailArray[1].equals(ValidDomain.YAHOO.getValue()) || !mailArray[1].equals(ValidDomain.GMAIL.getValue())) return false;
+        if (!mailArray[1].equals(ValidDomain.YAHOO.getValue()) && !mailArray[1].equals(ValidDomain.GMAIL.getValue())) return false;
 
         //Check first and last name
         if (userDTO.getFirstName().equals(null) || userDTO.getLastName().equals(null)) return false;
