@@ -1,5 +1,17 @@
 # MailApp
 
+The `application.properties` has to be added with the according credentials:
+
+```
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=
+spring.mail.password=
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+```
+
 ### Objective: 
 
 Create a REST API that allows users to create an account, and another one that allows users to check the account created.
