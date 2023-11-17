@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="#5f9ea0">
+<h2 align="center">Account Details</h2>
+<button type="button" onclick="location.href='/api/mainpage'"><h4>&nbsp;&nbsp;Go Home&nbsp;&nbsp;</h4></button>
+
+<p th:text="${user.id}"></p>
+<p th:text="${user.firstName}"></p>
+<p th:text="${user.lastName}"></p>
+<p th:text="${user.mail}"></p>
+
+</body>
+</html>
